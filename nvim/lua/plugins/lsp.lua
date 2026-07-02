@@ -65,15 +65,23 @@ return {
     -- TypeScript / JavaScript
     lsp.config("ts_ls", {})
 
-    -- Angular
-    lsp.config("angularls", {
-      on_new_config = function(new_config, root_dir)
-        new_config.cmd = { "ngserver", "--stdio", "--tsProbeLocations", root_dir, "--ngProbeLocations", root_dir }
-      end,
-    })
-
-    -- Enable servers automatically for matching buffers.
-    lsp.enable({ "lua_ls", "gopls", "ts_ls", "angularls" })
+	-- Angular
+	local mason = vim.fn.stdpath("data") .. "/mason/packages/angular-language-server/node_modules"
+		lsp.config("angularls", {
+		filetypes = { "typescript", "html", "htmlangular" },
+		root_markers = { "angular.json", "project.json" },
+		cmd = function(dispatchers, config)
+			local root = config.root_dir or vim.fn.getcwd()
+			local cmd = {
+			"ngserver", "--stdio",
+			"--tsProbeLocations", root .. "," .. mason,
+			"--ngProbeLocations", root .. "," .. mason,
+			}
+			return vim.lsp.rpc.start(cmd, dispatchers)
+		end,
+	})
+	-- Enable servers automatically for matching buffers.
+    vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "angularls" })
   end,
 }
 
