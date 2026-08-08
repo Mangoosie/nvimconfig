@@ -1,4 +1,3 @@
-language en_US
 lua require('config')
 :set number " show line numbers
 :set relativenumber " show line number on the current line relative to other lines
