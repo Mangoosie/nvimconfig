@@ -1,8 +1,4 @@
-{ pkgs, ... }:
-let
-  nix-alien-pkgs = import (builtins.fetchTarball
-    "https://github.com/thiagokokada/nix-alien/tarball/master") { };
-in
+{ pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
     gcc
@@ -26,7 +22,7 @@ in
     wl-clipboard
     neovim
     pdfstudioviewer
-    nix-alien-pkgs.nix-alien
+	inputs.nix-alien.packages.${pkgs.system}.nix-alien
     cargo
     rustc
     discord
