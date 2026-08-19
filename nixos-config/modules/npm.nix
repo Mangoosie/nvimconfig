@@ -1,4 +1,6 @@
 { pkgs, inputs, ... }:
 {
-	pkgs.nodepackages."@angular/cli";
+	environment.systemPackages = [
+	#	pkgs.nodePackages."@angular/cli"
+	];
 }

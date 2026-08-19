@@ -26,5 +26,7 @@
     cargo
     rustc
     discord
+	pciutils
+	lshw
   ];
 }
