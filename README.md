@@ -40,7 +40,7 @@ nixos-config/
     └── kitty.nix
 
 # Rebuild
-sudo nixos-rebuild switch --flake ~/Documents/git/nvimconfig/nixos-config#desktop-nixos
+sudo nixos-rebuild switch --flake ~/Documents/git/MyShmetup/nixos-config#desktop-nixos
 
 
 # TODO
