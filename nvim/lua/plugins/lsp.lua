@@ -43,7 +43,7 @@ return {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-     ensure_installed = { "lua_ls", "gopls", "ts_ls", "angularls" },
+     ensure_installed = { "lua_ls", "gopls", "ts_ls", "angularls", "phpactor", },
     })
 
     -- NEW Neovim 0.11 API
@@ -65,6 +65,9 @@ return {
     -- TypeScript / JavaScript
     lsp.config("ts_ls", {})
 
+
+    lsp.config("phpactor", {})
+
 	-- Angular
 	local mason = vim.fn.stdpath("data") .. "/mason/packages/angular-language-server/node_modules"
 		lsp.config("angularls", {
@@ -81,7 +84,7 @@ return {
 		end,
 	})
 	-- Enable servers automatically for matching buffers.
-    vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "angularls" })
+    vim.lsp.enable({ "lua_ls", "gopls", "ts_ls", "angularls", "phpactor" })
   end,
 }
 
