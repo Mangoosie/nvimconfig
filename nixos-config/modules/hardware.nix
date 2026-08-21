@@ -4,10 +4,15 @@
   services.lact.enable = true;
   hardware.amdgpu.overdrive.enable = true;
 
+
+  environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD"; #For gpu accelerated video
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = [ pkgs.intel-compute-runtime ];
+    extraPackages = with pkgs; [ 
+		intel-media-driver
+		intel-compute-runtime
+	];
   };
 
   hardware.bluetooth.enable = true;
